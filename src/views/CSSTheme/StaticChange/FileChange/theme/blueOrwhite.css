@@ -1,0 +1,51 @@
+body {
+  background-color: #dedfe0;
+}
+
+#header {
+  background-color: #fff;
+  border-bottom: solid 1px rgba(160, 160, 160, 0.3);
+
+  a {
+    color: #409eff;
+  }
+
+  h1 {
+    color: #409eff;
+  }
+}
+
+#header .main button {
+  color: #fff;
+  background-color: #409eff;
+}
+
+a:hover {
+  opacity: 0.5;
+  color: #409eff !important;
+}
+
+a:hover:before {
+  opacity: 0.5;
+  color: #409eff !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #2e3441;
+}
+
+
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+button:hover,
+.button:hover {
+  opacity: 0.7;
+  transition: .25s;
+  box-shadow: 0 0px 1px 1px #409eff;
+}

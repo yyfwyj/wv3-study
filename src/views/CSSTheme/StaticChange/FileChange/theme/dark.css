@@ -1,0 +1,44 @@
+body {
+  background-color: #2e3441;
+}
+
+
+#header {
+  background-color: #2e3441;
+  color: #fff;
+  border-bottom: solid 1px rgba(160, 160, 160, 0.3);
+}
+
+#header .main button {
+  border: 1px solid #fff;
+  color: #ffffff8f;
+}
+
+a:hover {
+  /* border: 1px solid #d2ae6a; */
+  color: #d2ae6a !important;
+  transition: .25s;
+}
+
+a:hover:before {
+  /* border: 1px solid #d2ae6a; */
+  transition: .25s;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #d2ae6a;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+button:hover,
+.button:hover {
+  box-shadow: inset 0 0 0 1px #d2ae6a;
+  color: #d2ae6a !important;
+}
