@@ -1,22 +1,39 @@
 <template>
   <div id="Home">
-    <Transition name="Robot">
-      <div v-if="isLineShow" class="Robot">
-        <div v-for="item in 2" class="eye"></div>
-      </div>
-    </Transition>
+    <main class="content">
+      <Transition name="Robot">
+        <div v-if="isRobotShow" @animationend="func" class="Robot">
+          <template v-if="isEyeShow">
+            <div v-for="item in 2" class="eye"></div>
+            <div v-for="item in 2" class="hand"></div>
+          </template>
+        </div>
+      </Transition>
+
+      <!-- text文本 -->
+      <h1 class="title">WELCOME TO WV3STUDY</h1>
+
+      <!-- 进入按钮 -->
+
+      <button class="login">HELLO&nbsp;&nbsp;WORLD</button>
+    </main>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
-const isLineShow = ref(false)
 const isRobotShow = ref(false)
+const isEyeShow = ref(false)
+
+const func = () => {
+  console.log('动画执行完毕')
+  isEyeShow.value = true
+}
 
 onMounted(() => {
   setTimeout(() => {
-    isLineShow.value = true
+    isRobotShow.value = true
   }, 1000)
 })
 </script>
@@ -25,54 +42,70 @@ onMounted(() => {
 #Home {
   width: 100vw;
   height: 100vh;
-  display: flex;
-  justify-content: center;
   background-color: black;
-  .Robot {
-    margin-top: 150px;
-    width: 500px;
-    height: 300px;
-    position: relative;
-    top: 0;
-    border: 4px solid #fff;
+  .content {
+    width: 70%;
+    margin: 0 auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    animation: ARobot 0.1s linear, MoveBottom 2.5s infinite;
-    .eye {
-      width: 50px;
-      height: 50px;
-      background-color: #fff;
-      animation: AEye 5s infinite;
+    .Robot {
+      width: 200px;
+      height: 100px;
+      position: relative;
+      top: 0;
+      border: 4px solid #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      animation: ARobot 0.1s linear;
+      margin-top: 150px;
+      .eye {
+        width: 20px;
+        height: 20px;
+        background-color: #fff;
+        animation: AEye 5s infinite;
+      }
+
+      .hand {
+        width: 25px;
+        height: 25px;
+        background-color: #fff;
+        position: absolute;
+        left: 220px;
+        top: 110px;
+      }
+
+      .hand:last-child {
+        width: 25px;
+        height: 25px;
+        background-color: #fff;
+        position: absolute;
+        left: -45px;
+        top: 110px;
+      }
     }
-  }
 
-  /*右手*/
-  .Robot::after {
-    content: '';
-    width: 75px;
-    height: 75px;
-    background-color: #fff;
-    position: absolute;
-    left: 410px;
-    top: 250px;
-    // .animationAHand(450px,45px,1.5s);
-  }
-  /*左手*/
-  .Robot::before {
-    content: '';
-    width: 75px;
-    height: 75px;
-    background-color: #fff;
-    position: absolute;
-    left: 15px;
-    top: 250px;
-    // .animationAHand(250px,25px,1.5s);
-  }
+    .Robot-enter-active,
+    .Robot-leave-active {
+      transition: animation 0.5s ease;
+    }
 
-  .Robot-enter-active,
-  .Robot-leave-active {
-    transition: animation ease;
+    .title {
+      color: #fff;
+      margin: 0 auto;
+      margin-top: 96px;
+    }
+
+    .login {
+      margin-top: 48px;
+      width: 200px;
+      height: 60px;
+      background: transparent;
+      border: 1px solid #fff;
+      color: #fff;
+      cursor: pointer;
+    }
   }
 }
 
@@ -80,81 +113,49 @@ onMounted(() => {
   0% {
     width: 0;
     height: 0;
+    .Robot::after {
+      display: none;
+    }
   }
 
   50% {
-    width: 500px;
+    width: 200px;
     height: 0px;
   }
 
   100% {
-    width: 500px;
-    height: 300px;
+    width: 200px;
+    height: 100px;
+    .Robot::after {
+      display: block;
+    }
   }
 }
 
 @keyframes AEye {
   form {
-    width: 50px;
-    height: 50px;
+    width: 20px;
+    height: 20px;
   }
 
   49% {
-    width: 50px;
-    height: 50px;
+    width: 20px;
+    height: 20px;
   }
 
   50% {
-    width: 50px;
-    height: 5px;
+    width: 20px;
+    height: 1px;
   }
 
   51% {
-    width: 50px;
-    height: 50px;
+    width: 20px;
+    height: 20px;
   }
 
   to {
-    width: 50px;
-    height: 50px;
+    width: 20px;
+    height: 20px;
   }
-}
-
-@keyframes MoveBottom {
-  from {
-    top: 0;
-  }
-
-  50% {
-    top: 25px;
-  }
-
-  to {
-    top: 0;
-  }
-}
-
-.animation(@animation-name,@animation-duration,@animation-timing-function) {
-  animation: @arguments;
-}
-
-.animationAHand(@top,@move,@time) {
-  @keyframes AHand {
-    from {
-      top: @top;
-    }
-
-    50% {
-      top: calc(@top + @move);
-    }
-
-    to {
-      top: @top;
-    }
-  }
-
-  animation-name: AHand;
-  animation-duration: @time;
-  animation-iteration-count: infinite;
 }
 </style>
