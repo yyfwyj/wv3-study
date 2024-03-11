@@ -34,9 +34,14 @@ const routes: Array<RouteRecordRaw> = [
     name: 'CSSTheme',
     children: [
       {
-        path: '/CSSTheme/StaticChange',
-        name: 'StaticChange',
+        path: '/CSSTheme/LinkFileChange',
+        name: 'LinkFileChange',
         component: () => import('@/views/CSSTheme/StaticChange/LinkFileChange/index.vue'),
+      },
+      {
+        path: '/CSSTheme/ImportFileChange',
+        name: 'ImportFileChange',
+        component: () => import('@/views/CSSTheme/StaticChange/ImportFileChange/index.vue'),
       },
     ],
   },

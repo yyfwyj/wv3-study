@@ -345,7 +345,7 @@ const FileChange = () => {
 
 const themeChange = (item?: { key: String; label: String }) => {
   if (item) {
-    CSSHerf.value = `src/views/CSSTheme/StaticChange/FileChange/theme/${item.key}.css`
+    CSSHerf.value = `src/views/CSSTheme/StaticChange/LinkFileChange/theme/${item.key}.css`
   }
 
   const link = document.querySelector(
@@ -361,7 +361,11 @@ const themeChange = (item?: { key: String; label: String }) => {
 
 const gray = () => {
   const html = document.getElementsByTagName('html')[0]
-  html.style.filter = 'grayscale(1)'
+  if (html.style.filter) {
+    html.style.removeProperty('filter')
+  } else {
+    html.style.setProperty('filter', 'grayscale(1)')
+  }
 }
 
 onBeforeMount(() => {
