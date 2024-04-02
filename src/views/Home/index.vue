@@ -15,19 +15,27 @@
 
       <!-- 进入按钮 -->
 
-      <button class="login">HELLO&nbsp;&nbsp;WORLD</button>
+      <button class="login" @click="go">HELLO&nbsp;&nbsp;WORLD</button>
     </main>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const isRobotShow = ref(false)
 const isEyeShow = ref(false)
 
+const go = () => {
+  console.log(router, '==========>')
+
+  router.push('/main')
+}
+
 const func = () => {
-  console.log('动画执行完毕')
   isEyeShow.value = true
 }
 
