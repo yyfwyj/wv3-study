@@ -1,0 +1,15 @@
+:root {
+  --theme-background: pink;
+}
+
+html[data-theme='default'] {
+  --theme-background: #fff;
+}
+
+html[data-theme='black'] {
+  --theme-background: #000;
+}
+
+html[data-theme='blue'] {
+  --theme-background: blue;
+}

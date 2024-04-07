@@ -48,7 +48,16 @@ export const routes: Array<RouteRecordRaw> = [
           viewName: 'link标签换肤方案'
         }
       },
-    ], 
+      {
+        path: '/CSSTheme/VariableChange',
+        name: 'VariableChange',
+        component: () => import('@/views/CSSTheme/StaticChange/VariableChange/index.vue'),
+        meta: {
+          render: true,
+          viewName: 'Css变量换肤方案'
+        }
+      }
+    ],
     meta: {
       render: true,
       viewName: '样式切换'

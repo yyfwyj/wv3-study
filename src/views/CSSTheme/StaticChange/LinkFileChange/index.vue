@@ -290,7 +290,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, onBeforeMount, onMounted } from 'vue'
+import { reactive, ref, onBeforeMount } from 'vue'
 const CSSHerf = ref(
   'src/views/CSSTheme/StaticChange/FileChange/theme/default.css'
 )
@@ -331,6 +331,15 @@ const ThemeChangeBtnArray = reactive([
   },
 ])
 
+const gray = () => {
+  const html = document.getElementsByTagName('html')[0]
+  if (html.style.filter) {
+    html.style.removeProperty('filter')
+  } else {
+    html.style.setProperty('filter', 'grayscale(1)')
+  }
+}
+
 /**
  * 1. 创建一个link标签，引入默认的CSS文件
  * 2. 根据不同的主题来进行link标签的CSS内容切换，从而实现主题切换
@@ -356,15 +365,6 @@ const themeChange = (item?: { key: String; label: String }) => {
     link.href = CSSHerf.value
   } else {
     FileChange()
-  }
-}
-
-const gray = () => {
-  const html = document.getElementsByTagName('html')[0]
-  if (html.style.filter) {
-    html.style.removeProperty('filter')
-  } else {
-    html.style.setProperty('filter', 'grayscale(1)')
   }
 }
 
