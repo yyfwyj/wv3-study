@@ -1,5 +1,4 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="layout">
@@ -11,7 +10,8 @@
 
 <style scoped>
 .layout {
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
 }
 

@@ -202,3 +202,5 @@ class AxiosHttp {
     )
   }
 }
+
+export default AxiosHttp
