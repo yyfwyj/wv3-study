@@ -4,7 +4,6 @@
       <div
         class="fs-waterfall-item"
         v-for="(item, index) in state.cardList"
-        :key="item.id"
         :style="{
           width: `${state.cardPos[index].width}px`,
           height: `${state.cardPos[index].height}px`,
@@ -34,7 +33,6 @@ export interface IWaterFallProps {
 }
 
 export interface ICardItem {
-  id: string | number
   url: string
   width: number
   height: number
@@ -50,8 +48,8 @@ export interface ICardPos {
 }
 
 const props = reactive({
-  gap: 20, // 卡片间隔
-  column: 8, // 瀑布流列数
+  gap: 12, // 卡片间隔
+  column: 6, // 瀑布流列数
   bottom: 20, // 距底距离（触底加载更多）
   pageSize: 1,
   request: (page: number, pageSize: number) => Promise<ICardItem[]>,
@@ -65,7 +63,6 @@ const state = reactive({
   cardPos: [] as ICardPos[], // 卡片摆放位置信息
   columnHeight: new Array(props.column).fill(0) as number[], // 存储每列的高度，进行初始化操作
 })
-
 
 // 渲染函数
 const render = () => {
@@ -82,12 +79,7 @@ const getCardList = async (page: number, pageSize: number) => {
   // const list = await props.request(page, pageSize)
   let list
   await axios.get('/lazyLoading/list').then((res) => {
-    list = res.data.data.lazyLoadingArr.map((i: any) => ({
-      id: i.id,
-      url: i.note_card.cover.url_default,
-      width: i.note_card.cover.width,
-      height: i.note_card.cover.height,
-    }))
+    list = res.data.lazyLoadingArr
     state.page++
     if (!list.length) {
       state.isFinish = true
@@ -159,7 +151,6 @@ onMounted(() => {
     overflow-y: scroll; // 注意需要提前设置展示滚动条，如果等数据展示再出现滚动造成计算偏差
     overflow-x: hidden;
   }
-
   &-list {
     width: 100%;
     position: relative;
@@ -168,7 +159,7 @@ onMounted(() => {
     position: absolute;
     left: 0;
     top: 0;
-    box-sizing: border-box;
+
     img {
       width: 100%;
       object-fit: cover;

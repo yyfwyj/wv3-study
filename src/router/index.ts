@@ -64,15 +64,29 @@ export const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: '/CSSLayout',
-    name: 'CSSLayout',
+    path: '/Layout',
+    name: 'Layout',
     children: [
       {
-        path: '/CSSLayout/LazyLoading',
+        path: '/Layout/LazyLoading',
         name: 'LazyLoading',
         component: () =>
-          import('@/views/CSSLayout/LazyLoading/index.vue')
-      }
+          import('@/views/Layout/LazyLoading/index.vue'),
+        meta: {
+          render: true,
+          viewName: '瀑布流Vue3+TS案例'
+        }
+      },
+      {
+        path: '/Layout/Study1',
+        name: 'LazyLoadingStudy1',
+        component: () =>
+          import('@/views/Layout/LazyLoading/study1.vue'),
+        meta: {
+          render: true,
+          viewName: '瀑布流学习Vue3+TS|初版'
+        }
+      },
     ],
     meta: {
       render: true,

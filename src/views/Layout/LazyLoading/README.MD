@@ -10,3 +10,8 @@
 ---
 
 # 2. 开发思路
+
+---
+# 3. 路径表
+1. `CSSLayout/LazyLoading/index.vue` 瀑布流布局的实现案例代码 JS方式实现
+2. `CSSLayout/LazyLoading/study1.vue` 学习实现
