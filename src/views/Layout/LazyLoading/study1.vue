@@ -33,7 +33,7 @@ type TLazyLoadingArr = IlazyLoadingArr[]
 
 interface ICardPost {
   width: number
-  height: number
+  height: number 
   x: number
   y: number
 }
