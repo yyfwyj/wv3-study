@@ -4,6 +4,7 @@
  * @function createWebHashHistory hash路由模式函数
  * @type {RouteRecordRaw} 路由数组类型
  */
+import { render } from 'vue'
 import {
   createRouter,
   createWebHashHistory,
@@ -30,7 +31,7 @@ export const routes: Array<RouteRecordRaw> = [
     },
   },
   {
-    path: '/main',
+    path: '/Main',
     name: 'Main',
     component: () => import('@/views/Main/index.vue'),
   },
@@ -87,10 +88,68 @@ export const routes: Array<RouteRecordRaw> = [
           viewName: '瀑布流学习Vue3+TS|初版'
         }
       },
+      {
+        path: '/Layout/Grid',
+        name: 'LayoutGrid',
+        component: () => import('@/views/Layout/Grid/index.vue'),
+        meta: {
+          render: true,
+          viewName: 'Grid布局'
+        }
+      }
     ],
     meta: {
       render: true,
-      viewName: '瀑布流'
+      viewName: '布局方案'
+    }
+  },
+  {
+    path: '/Component',
+    name: 'Component',
+    children: [
+      {
+        path: '/Component/BackgroundVideo',
+        name: 'LazyLoading',
+        component: () =>
+          import('@/views/Component/BackgroundVideo/index.vue'),
+        meta: {
+          render: true,
+          viewName: '视频背景'
+        }
+      },
+    ],
+    meta: {
+      render: true,
+      viewName: '功能组件'
+    }
+  },
+  {
+    path: '/PageEffects',
+    name: '/PageEffects',
+    children: [
+      {
+        path: '/PageEffects/PageScroll',
+        name: 'PageScroll',
+        children: [
+         {
+          path: '/PageEffects/PageScroll/ScreenScroll',
+          name: 'ScreenScroll',
+          component: ()=> import("@/views/PageEffects/PageScroll/ScreenScroll/page_1.vue"),
+          meta: {
+            render: true,
+            viewName: '整屏滚动'
+          }
+         }
+        ],
+        meta: {
+          render: true,
+          viewName: '视差滚动'
+        }
+      }
+    ],
+    meta: {
+      render: true,
+      viewName: '页面效果'
     }
   }
 ]
