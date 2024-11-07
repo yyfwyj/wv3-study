@@ -168,7 +168,7 @@ class AxiosHttp {
   constructor() {}
 
   // 4.2 定义一个私有变量，用于保存获取到的axios实例
-  private static axiosInstance: AxiosInstance = Axios.create(getConfig())
+  static axiosInstance: AxiosInstance = Axios.create(getConfig())
 
   // 4.3 设置请求拦截器
   private HttpIntercetorsRequest(): void {
