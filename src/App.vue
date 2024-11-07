@@ -10,12 +10,12 @@
 
 <style scoped>
 .layout {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
 }
 
-.div1 {
+/* .div1 {
   width: 50%;
   height: 100%;
   background-color: aqua;
@@ -25,5 +25,5 @@
   width: 50%;
   height: 100%;
   background-color: aquamarine;
-}
+} */
 </style>
